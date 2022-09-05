@@ -8,11 +8,35 @@ namespace Parcel_Sorting_line
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+
+            FirstParceLine(BoxSizes);
         }
 
         public static bool FirstParceLine(List<BoxSize> boxSizes)
         {
             bool parcelFits = false;
+
+            foreach (BoxSize box in boxSizes)
+            {
+                Console.WriteLine("New sorting line starts");
+
+                var boxLengthInHalf = box.Lenght / 2;
+                var halfBoxDiagonalNotSqrt = (boxLengthInHalf * boxLengthInHalf) + (box.Width * box.Width);
+                var halfParceDiagonal = Math.Sqrt(halfBoxDiagonalNotSqrt);
+
+                foreach (SortingLineParam sortingLine in box.SortingLineParams)
+                {
+                    if(sortingLine.LineWidth >= halfParceDiagonal)
+                    {
+                        Console.WriteLine("Sorting line width is {0} and it fits", sortingLine.LineWidth);
+                    }
+
+                    else if (box.Width >= halfParceDiagonal)
+                    {
+                        Console.WriteLine("Sorting line width is {0} and it fits", sortingLine.LineWidth);
+                    }
+                }
+            }
 
             return parcelFits;
         }
@@ -88,19 +112,19 @@ namespace Parcel_Sorting_line
                         LineWidth = 90
                     }
                 }
-            },
+            }
         };
+    }
 
-        public class BoxSize
-        {
-            public int Lenght { get; set; }
-            public int Width { get; set; }
-            public List<SortingLineParam> SortingLineParams { get; set; } = new List<SortingLineParam>();
-        }
+    public class BoxSize
+    {
+        public int Lenght { get; set; }
+        public int Width { get; set; }
+        public List<SortingLineParam> SortingLineParams { get; set; } = new List<SortingLineParam>();
+    }
 
-        public class SortingLineParam
-        {
-            public int LineWidth { get; set; }
-        }
+    public class SortingLineParam
+    {
+        public int LineWidth { get; set; }
     }
 }
