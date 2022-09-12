@@ -6,4 +6,19 @@
     <RootNamespace>Parcel_Sorting_line</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <COMReference Include="FileViewLib.dll">
+      <Guid>be79c475-d632-4a57-91b3-da044fa27cda</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+    </COMReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
 </Project>
